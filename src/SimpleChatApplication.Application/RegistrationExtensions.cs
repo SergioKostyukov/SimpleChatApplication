@@ -1,6 +1,16 @@
-﻿namespace SimpleChatApplication.Application;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SimpleChatApplication.Application.MappingProfiles;
 
-public class RegistrationExtensions
+namespace SimpleChatApplication.Application;
+
+public static class RegistrationExtensions
 {
+    public static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(MappingProfile));
 
+        services.AddScoped<IChatService, ChatService>();
+
+        return services;
+    }
 }

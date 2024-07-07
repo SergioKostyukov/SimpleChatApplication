@@ -16,5 +16,10 @@ internal class ChatParticipantEntityConfiguration : IEntityTypeConfiguration<Cha
         builder.Property(x => x.Role)
             .IsRequired()
             .HasConversion<int>();
+
+        // Налаштовуємо зв'язок один-до-одного між ChatParticipant та Chat
+        builder.HasOne(p => p.Chat)
+               .WithMany(c => c.Participants)
+               .HasForeignKey(p => p.ChatId);
     }
 }

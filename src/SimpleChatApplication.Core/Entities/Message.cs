@@ -7,4 +7,6 @@ public class Message
     public int SenderId { get; set; }
     public string Body { get; set; } = string.Empty;
     public DateTime SentTime { get; set; }
+
+    public Chat Chat { get; set; }
 }

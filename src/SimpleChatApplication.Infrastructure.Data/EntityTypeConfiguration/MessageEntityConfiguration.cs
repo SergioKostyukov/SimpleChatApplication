@@ -21,5 +21,10 @@ internal class MessageConfiguration : IEntityTypeConfiguration<Message>
 
         builder.Property(x => x.SentTime)
             .IsRequired();
+
+        // Налаштовуємо зв'язок один-до-одного між Message та Chat
+        builder.HasOne(m => m.Chat)
+               .WithMany(c => c.Messages)
+               .HasForeignKey(m => m.ChatId);
     }
 }

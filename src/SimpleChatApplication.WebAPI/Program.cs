@@ -1,4 +1,5 @@
 using SimpleChatApplication.Infrastructure.Data;
+using SimpleChatApplication.Application;
 
 namespace SimpleChatApplication;
 
@@ -10,6 +11,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddStorage(builder.Configuration);
+
+        builder.Services.AddServices();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
