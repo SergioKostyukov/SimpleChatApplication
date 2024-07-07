@@ -1,3 +1,5 @@
+using SimpleChatApplication.Infrastructure.Data;
+
 namespace SimpleChatApplication;
 
 public class Program
@@ -6,6 +8,8 @@ public class Program
     {
         #region Configure services
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddStorage(builder.Configuration);
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
