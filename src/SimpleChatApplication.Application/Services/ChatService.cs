@@ -25,7 +25,7 @@ internal class ChatService(ILogger<ChatService> logger,
             Title = c.Title,
             CreatorId = c.CreatorId,
             CreationTime = c.CreationTime,
-            ParticipationActive = c.CreatorId == userId
+            ActiveAdminStatus = c.CreatorId == userId
         })
         .ToListAsync();
 
@@ -42,7 +42,7 @@ internal class ChatService(ILogger<ChatService> logger,
         return _mapper.Map<ChatDto>(chat);
     }
 
-    public async Task Create(ChatCreateDto request)
+    public async Task<int> Create(ChatCreateDto request)
     {
         var newChat = _mapper.Map<Chat>(request);
 
@@ -50,7 +50,6 @@ internal class ChatService(ILogger<ChatService> logger,
         await _dbContext.SaveChangesAsync();
 
         var chatId = newChat.Id;
-
         if (chatId == 0)
         {
             throw new InvalidOperationException("Failed to retrieve the generated ChatId.");
@@ -66,6 +65,8 @@ internal class ChatService(ILogger<ChatService> logger,
 
         await _dbContext.ChatParticipants.AddAsync(chatParticipant);
         await _dbContext.SaveChangesAsync();
+
+        return chatId;
     }
 
     public async Task Connect(int chatId, int userId)

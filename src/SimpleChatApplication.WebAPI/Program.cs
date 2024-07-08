@@ -1,5 +1,6 @@
 using SimpleChatApplication.Infrastructure.Data;
 using SimpleChatApplication.Application;
+using SignalRChat.Hubs;
 
 namespace SimpleChatApplication;
 
@@ -17,6 +18,9 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddSignalR();
+
         #endregion
 
         #region Configure pipeline
@@ -31,9 +35,12 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        app.UseRouting();
+
         app.UseAuthorization();
 
         app.MapControllers();
+        app.MapHub<ChatHub>("/chatHub");
 
         app.Run();
         #endregion

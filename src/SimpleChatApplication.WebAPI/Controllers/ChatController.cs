@@ -39,19 +39,18 @@ namespace SimpleChatApplication.WebAPI.Controllers
         {
             try
             {
-                await _chatService.Create(new ChatCreateDto(
+                int chatId = await _chatService.Create(new ChatCreateDto(
                     CreatorId: userId,
                     Title: chatTitle,
                     CreationTime: DateTime.UtcNow
                 ));
 
-                return Ok();
+                return Ok($"Chat with ID {chatId} created");
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
         [HttpPost]

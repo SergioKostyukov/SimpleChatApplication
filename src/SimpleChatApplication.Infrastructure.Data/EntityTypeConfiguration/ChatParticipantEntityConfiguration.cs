@@ -17,7 +17,6 @@ internal class ChatParticipantEntityConfiguration : IEntityTypeConfiguration<Cha
             .IsRequired()
             .HasConversion<int>();
 
-        // Налаштовуємо зв'язок один-до-одного між ChatParticipant та Chat
         builder.HasOne(p => p.Chat)
                .WithMany(c => c.Participants)
                .HasForeignKey(p => p.ChatId);

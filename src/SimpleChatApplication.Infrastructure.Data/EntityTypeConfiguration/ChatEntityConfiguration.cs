@@ -19,13 +19,11 @@ internal class ChatEntityConfiguration : IEntityTypeConfiguration<Chat>
         builder.Property(x => x.CreationTime)
             .IsRequired();
 
-        // Налаштовуємо зв'язок один-до-багатьох між Chat та Message
         builder.HasMany(c => c.Messages)
                .WithOne(m => m.Chat)
                .HasForeignKey(m => m.ChatId)
                .OnDelete(DeleteBehavior.Cascade);
 
-        // Налаштовуємо зв'язок один-до-багатьох між Chat та ChatParticipant
         builder.HasMany(c => c.Participants)
                .WithOne(p => p.Chat)
                .HasForeignKey(p => p.ChatId)

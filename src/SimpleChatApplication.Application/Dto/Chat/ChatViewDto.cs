@@ -6,5 +6,5 @@ public class ChatViewDto
     public int CreatorId { get; init; }
     public string Title { get; init; } = string.Empty;
     public DateTime CreationTime { get; init; }
-    public bool ParticipationActive { get; set; } = false;
+    public bool ActiveAdminStatus { get; set; } = false;
 }
