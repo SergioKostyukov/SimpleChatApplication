@@ -5,24 +5,25 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChatApplication.Application", "src\SimpleChatApplication.Application\SimpleChatApplication.Application.csproj", "{B0ABF0D0-E16E-4740-B457-EBCEAEB7C1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatApplication.WebAPI", "src\SimpleChatApplication.WebAPI\SimpleChatApplication.WebAPI.csproj", "{4E67C897-9ED4-4437-BCB5-24ABD05B77C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChatApplication.WebAPI", "src\SimpleChatApplication.WebAPI\SimpleChatApplication.WebAPI.csproj", "{4E67C897-9ED4-4437-BCB5-24ABD05B77C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57D8FA5C-5D7B-4C34-9A5C-A73C1F9560D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{370F6088-EEEE-4E72-8C2C-BE33F50F5158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatApplication.Core", "src\SimpleChatApplication.Core\SimpleChatApplication.Core.csproj", "{CEB5178A-B0DB-4911-BF13-D9F361039565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChatApplication.Core", "src\SimpleChatApplication.Core\SimpleChatApplication.Core.csproj", "{CEB5178A-B0DB-4911-BF13-D9F361039565}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatApplication.Infrastructure.Data", "src\SimpleChatApplication.Infrastructure.Data\SimpleChatApplication.Infrastructure.Data.csproj", "{3F635C16-64C3-4B64-9F9A-C5D9CA79FE2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChatApplication.Infrastructure.Data", "src\SimpleChatApplication.Infrastructure.Data\SimpleChatApplication.Infrastructure.Data.csproj", "{3F635C16-64C3-4B64-9F9A-C5D9CA79FE2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B1CE8F3-0929-4442-9D92-76F94E851D97}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\Create pipeline.yml = .github\workflows\Create pipeline.yml
 		README.md = README.md
 		Task.txt = Task.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatApplication.Tests", "tests\SimpleChatApplication.Tests\SimpleChatApplication.Tests.csproj", "{0FE81814-4F49-4E7F-9F6A-C33E8AE40824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChatApplication.Tests", "tests\SimpleChatApplication.Tests\SimpleChatApplication.Tests.csproj", "{0FE81814-4F49-4E7F-9F6A-C33E8AE40824}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
