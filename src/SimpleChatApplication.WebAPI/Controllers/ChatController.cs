@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SimpleChatApplication.Application;
 using SimpleChatApplication.Application.Dto;
-using System.Security.Authentication;
 
 namespace SimpleChatApplication.WebAPI.Controllers
 {
@@ -16,7 +15,7 @@ namespace SimpleChatApplication.WebAPI.Controllers
         {
             List<ChatViewDto> Chats = await _chatService.GetList(userId);
 
-            return Ok(new { ChatsList = Chats });
+            return Ok(Chats);
         }
 
         [HttpGet]
@@ -26,11 +25,15 @@ namespace SimpleChatApplication.WebAPI.Controllers
             {
                 ChatDto Chat = await _chatService.GetById(chatId);
 
-                return Ok(new { ChatDetails = Chat });
+                return Ok(new { Chat });
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -62,7 +65,7 @@ namespace SimpleChatApplication.WebAPI.Controllers
 
                 return Ok();
             }
-            catch (Exception ex) when (ex is KeyNotFoundException || ex is InvalidDataException)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -77,11 +80,7 @@ namespace SimpleChatApplication.WebAPI.Controllers
 
                 return Ok();
             }
-            catch (InvalidCredentialException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex) when (ex is KeyNotFoundException || ex is InvalidDataException)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

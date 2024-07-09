@@ -18,6 +18,8 @@ internal class ChatService(ILogger<ChatService> logger,
 
     public async Task<List<ChatViewDto>> GetList(int userId)
     {
+        _logger.LogInformation($"Getting chat list for user ID: {userId}");
+
         var chats = await _dbContext.Chats
         .Select(c => new ChatViewDto
         {
@@ -34,6 +36,8 @@ internal class ChatService(ILogger<ChatService> logger,
 
     public async Task<ChatDto> GetById(int chatId)
     {
+        _logger.LogInformation($"Getting chat by ID: {chatId}");
+
         var chat = await _dbContext.Chats
             .Include(c => c.Messages)
             .Include(c => c.Participants)
@@ -44,6 +48,8 @@ internal class ChatService(ILogger<ChatService> logger,
 
     public async Task<int> Create(ChatCreateDto request)
     {
+        _logger.LogInformation($"Creating new chat with title: {request.Title}");
+
         var newChat = _mapper.Map<Chat>(request);
 
         await _dbContext.Chats.AddAsync(newChat);
@@ -66,11 +72,15 @@ internal class ChatService(ILogger<ChatService> logger,
         await _dbContext.ChatParticipants.AddAsync(chatParticipant);
         await _dbContext.SaveChangesAsync();
 
+        _logger.LogInformation($"Chat with ID {chatId} created");
+
         return chatId;
     }
 
     public async Task Connect(int chatId, int userId)
     {
+        _logger.LogInformation($"Connecting user {userId} to chat {chatId}");
+
         var chat = await _dbContext.Chats
             .FindAsync(chatId) ?? throw new KeyNotFoundException($"Chat with ID {chatId} not found.");
 
@@ -94,6 +104,8 @@ internal class ChatService(ILogger<ChatService> logger,
 
     public async Task Delete(int chatId, int userId)
     {
+        _logger.LogInformation($"Deleting chat {chatId} by user {userId}");
+
         var chat = await _dbContext.Chats
             .FindAsync(chatId) ?? throw new KeyNotFoundException($"Chat with ID {chatId} not found.");
 
